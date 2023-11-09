@@ -1,0 +1,57 @@
+import java.util.Scanner;
+
+public class BaseConversion {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+    
+
+        // Read input values
+        System.out.print("Enter: ");
+        //The first line contains an integer, which is the base that the number 'base 1'
+        int base1 = scanner.nextInt();
+        System.out.print("Enter: ");
+        
+        //The second line contains another integer,
+        int base2 = scanner.nextInt();
+        System.out.print("Enter: ");
+        
+        //The third line contains a value representing the number (N) in the specified base1. It's important to note that for bases higher than 10, digits are represented using lowercase alphabetic characters (e.g., 'a' for 11, 'b' for 12, and so on).
+        String number = scanner.next();
+        
+        //Output Format: The program should print out the number N in the appropriate base (base#2).
+        
+        //Constraints:
+
+/*The initial base (base#1) is between 2 and 32.
+The target base (base#2) is between 2 and 32.
+The absolute value of the number (N) in decimal (base 10) is less than or equal to 100,000,000,000,000.*/
+
+        // Convert the number from base1 to base10 (decimal)
+        //Conversion to Decimal
+        //convert the input number from base base1 to decimal 
+        long decimalNumber = convertToDecimal(number, base1);
+
+        // Convert the decimal number to the desired base (base2)
+        ////We call the convertFromDecimal function to convert the decimal number to the target base base2. We use the Long.toString method to perform this conversion
+        String result = convertFromDecimal(decimalNumber, base2);
+
+        // Print the result
+        System.out.println("The result is:" +result);
+
+        scanner.close();
+    }
+
+    // Function to convert a number from base1 to decimal
+    //This function takes a String representation of a number in a specific base and converts it to a decimal (base 10) long integer It uses the Long.parseLong method with the specified base
+    public static long convertToDecimal(String number, int base1) {
+        return Long.parseLong(number, base1);
+    }
+    
+    //his function takes a decimal number and converts it to a String representation in the target base base2 using the Long.toString method with the specified base
+    // Function to convert a decimal number to base2
+    public static String convertFromDecimal(long decimalNumber, int base2) {
+        return Long.toString(decimalNumber, base2);
+    }
+}
+
+//Example: For example, if the input is 5 for base#1, 6 for base#2, and "43" for N in base#1, the program should convert "43" from base 5 to base 6 and output 35
